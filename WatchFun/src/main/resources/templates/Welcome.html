@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watch Fun</title>
+  <meta name="description" content="">
+<meta name="author" content="">
+
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="/fonts/font-awesome/css/font-awesome.css"/>
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css"  href="/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/css/nivo-lightbox/nivo-lightbox.css"/>
+<link rel="stylesheet" type="text/css" href="/css/nivo-lightbox/default.css"/>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'/>
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<div th:insert="~{header :: header}"></div>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <header id="header">
+  <div class="intro">
+    <div class="container">
+      <div class="row">
+        <div class="intro-text">
+          <h1>Watch Fun</h1>
+          <hr>
+          <p>Movies • TV Series • Novels</p>
+          <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="Search" placeholder="Search here">
+                      <button type="submit" class="btn btn-default">Search</button>
+                    </div>
+                  </div> </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Navigation -->
+<div id="nav">
+  <nav class="navbar navbar-custom">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
+      </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-main-collapse">
+        <ul class="nav navbar-nav">
+          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden"> <a href="#page-top"></a> </li>
+          <li> <a class="page-scroll" href="#movies">Movies</a> </li>
+          <li> <a class="page-scroll" href="#novels">Novels</a> </li>
+          <li> <a class="page-scroll" href="#tvseries">TV Series</a> </li>
+        </ul>
+      </div>
+    </div>
+  </nav>  
+</div>
+
+
+
+<!--1 starts -->
+
+<!-- Movies Section -->
+<div id="movies">
+  <div class="container">
+
+    <div class="section-title text-center center">
+      <h2>Movies</h2>
+      <hr>
+    </div>
+    <div class="categories">
+      <ul class="cat">
+        <li>
+          <ol class="type">
+            <li><a href="#" data-filter="*" class="active">All</a></li>
+            <li><a href="#" data-filter=".latest-mov">Latest</a></li>
+            <li><a href="#" data-filter=".fav-mov">All time fav.</a></li>
+            <li><a href="#" data-filter=".upcoming-mov">Upcoming</a></li>
+          </ol>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row">
+      <div th:each="movie : ${mov}">
+
+
+     <!-- MOVIE ITEM-->
+
+
+        <div class="col-sm-6 col-md-3 col-lg-3 "> 
+          <div class="watchfun-item">
+            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${movie.rating}"></h4>
+              </div>
+              <img  th:src="@{${movie.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${movie.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+      </div>
+      <!-- Element ends-->
+    </div>
+  </div>
+  <div class="section-title text-center center">
+  <div class="about-text">
+          <a href="#portfolio" class="btn btn-default btn-lg page-scroll">More+</a> </div>      
+    </div>
+</div>
+
+
+<!--section 1 ends here -->
+
+<!-- 3-->
+
+<!-- Novels Section -->
+<div id="novels">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2>Novels</h2>
+      <hr>
+    </div>
+    <div class="categories">
+      <ul class="cat">
+        <li>
+          <ol class="type">
+            <li><a href="#" data-filter="*" class="active">All</a></li>
+            <li><a href="#" data-filter=".graphic">Graphic Design</a></li>
+            <li><a href="#" data-filter=".illustration">Illustration</a></li>
+            <li><a href="#" data-filter=".photography">Photography</a></li>
+          </ol>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row">
+      <div th:each="novel : ${nov}">
+
+
+     <!-- NOVEL ITEM-->
+
+
+        <div class="col-sm-6 col-md-3 col-lg-3 "> 
+          <div class="watchfun-item">
+            <div class="hover-bg"> <a th:href="@{~/save1}" th:title="${novel.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${novel.rating}"></h4>
+              </div>
+              <img th:src="@{${novel.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="dd">            
+            <li><a th:href="@{source/I-origin.torrent}" >Download11</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+      </div>
+      <!-- Element ends-->
+    </div>
+  </div>
+  <div class="section-title text-center center">
+  <div class="about-text">
+          <a href="#portfolio" class="btn btn-default btn-lg page-scroll">More+</a> </div>      
+    </div>
+</div>
+
+
+<!-- section 3 ends here-->
+
+<!-- 2-->
+<!-- TV-Series Section -->
+<div id="tvseries">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2>TV Series</h2>
+      <hr>
+    </div>
+    <div class="categories">
+      <ul class="cat">
+        <li>
+          <ol class="type">
+            <li><a href="#" data-filter="*" class="active">All</a></li>
+            <li><a href="#" data-filter=".graphic">Graphic Design</a></li>
+            <li><a href="#" data-filter=".illustration">Illustration</a></li>
+            <li><a href="#" data-filter=".photography">Photography</a></li>
+          </ol>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+        <div class="row">
+      <div th:each="tvSeries : ${tvs}">
+
+
+     <!-- TVSeries ITEM-->
+
+
+        <div class="col-sm-6 col-md-3 col-lg-3 "> 
+          <div class="watchfun-item">
+            <div class="hover-bg"> <a th:href="@{~/save1}" th:title="${tvSeries.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${tvSeries.rating}"></h4>
+              </div>
+              <img th:src="@{${tvSeries.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="dd">            
+            <li><a th:href="@{source/I-origin.torrent}" >Download113</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+      </div>
+      <!-- Element ends-->
+    </div>
+  </div>
+ <div class="section-title text-center center">
+  <div class="about-text">
+          <a href="#portfolio" class="btn btn-default btn-lg page-scroll">More+</a> </div>      
+    </div>
+</div>
+
+
+
+
+
+
+<div id="footer">
+  <div class="container text-center">
+    <div class="fnav">
+      <p>Copyright &copy; 2016 Magnum. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/js/jquery.1.11.1.js"></script> 
+<script type="text/javascript" src="/js/bootstrap.js"></script> 
+<script type="text/javascript" src="/js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="/js/nivo-lightbox.js"></script> 
+<script type="text/javascript" src="/js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="/js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="/js/contact_me.js"></script> 
+<script type="text/javascript" src="/js/main.js"></script>
+
+</body>
+</html>

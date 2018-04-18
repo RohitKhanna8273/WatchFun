@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="headerList" th:fragment="header">
+    <div class="headerLogoItem">
+      <ol class="navbarIcon">
+      <li><a th:href="@{/home}" ><b> Watch <span class="glyphicon glyphicon-play"></span> Fun</b></a></li>
+    </ol>
+    </div>
+    <div class="headerItem">
+      <ol class="navbarIcon">
+      <li><a th:href="@{/home}" > <span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li> <div class="dropdown">
+  <button class="dropbtn">Browse <span class="glyphicon glyphicon-chevron-down"></span></button>
+  <div class="dropdown-content">
+    <a th:href="@{/movies}">Movies</a>
+    <a th:href="@{/novels}">Novels</a>
+    <a th:href="@{/tvseries}">TV Series</a>
+  </div>
+</div> </li>
+      <li><a th:href="@{/contactUs}" ><span class="glyphicon glyphicon-phone-alt"></span> Contact Us</a></li>
+      <li><a th:href="@{/aboutUs}" ><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
+    </ol>
+    </div>
+
+</div>
+</html>
