@@ -304,7 +304,23 @@ ol.type li a:hover {
 	transition-property: transform, opacity;
 }
 
-.watchfun-item {
+.watchfun-movie {
+	margin: 15px 0;
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-ms-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+.watchfun-novel {
+	margin: 15px 0;
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-ms-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+.watchfun-tvseries {
 	margin: 15px 0;
 	-webkit-transition: all 0.5s ease-out;
 	-moz-transition: all 0.5s ease-out;
@@ -313,7 +329,21 @@ ol.type li a:hover {
 	transition: all 0.5s ease-out;
 }
 
-.watchfun-item:hover {
+.watchfun-movie:hover {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.watchfun-novel:hover {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.watchfun-tvseries:hover {
 	-webkit-transform: scale(1.1);
 	-moz-transform: scale(1.1);
 	-ms-transform: scale(1.1);
@@ -321,7 +351,19 @@ ol.type li a:hover {
 	transform: scale(1.1);
 }
 
-.watchfun-item .hover-bg {
+.watchfun-movie .hover-bg {
+	height: 195px;
+	overflow: hidden;
+	position: relative;
+}
+
+.watchfun-novel .hover-bg {
+	height: 195px;
+	overflow: hidden;
+	position: relative;
+}
+
+.watchfun-tvseries .hover-bg {
 	height: 195px;
 	overflow: hidden;
 	position: relative;
@@ -485,17 +527,16 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus,
 	background: #f6f6f6;
 	color: #777;
 	padding: 30px 0 25px 0;
-	posotion: absolute;
-	bottom: 0;
 	height: 15%;
 	width: 100%;
-	margin-bottom: 0
+	margin-bottom: 0;
 }
 
 .footerLocation {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+	
+	bottom:0;
+	position:absolute;
+	width:100%;
 }
 
 #footer p {

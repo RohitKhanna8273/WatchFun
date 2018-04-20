@@ -58,10 +58,9 @@
 										<td><button type="submit" class="btn btn-default">Search</button></td>
 									</tr>
 								</table>
-								<table>
-									<tr>
-										<td><div class="col-md-3">
-												<div class="dropdown">
+<!-- search category start -->
+      <ol class="navbarIcon">
+      <li><div class="dropdown">
 													<button class="dropbtn">
 														Year <span class="glyphicon glyphicon-chevron-down"></span>
 													</button>
@@ -71,10 +70,8 @@
 														<a th:href="@{/year/1990}">1990+</a>
 														<a th:href="@{/year/1980}">1980+</a>
 													</div>
-												</div>
-											</div></td>
-										<td><div class="col-md-3">
-												<div class="dropdown">
+												</div></li>
+      <li><div class="dropdown">
 													<button class="dropbtn">
 														Genre <span class="glyphicon glyphicon-chevron-down"></span>
 													</button>
@@ -104,10 +101,8 @@
 														<a th:href="@{/genre/Western}">Western</a>
 														<a th:href="@{/genre/Talk-Show}">Talk-Show</a>
 													</div>
-												</div>
-											</div></td>
-										<td><div class="col-md-3">
-												<div class="dropdown">
+												</div> </li>
+      <li><div class="dropdown">
 													<button class="dropbtn">
 														Rating <span class="glyphicon glyphicon-chevron-down"></span>
 													</button>
@@ -123,10 +118,8 @@
 														<a th:href="@{/rating/2}">2+</a>
 														<a th:href="@{/rating/1}">1+</a>
 													</div>
-												</div>
-											</div></td>
-										<td><div class="col-md-3">
-												<div class="dropdown">
+												</div></li>
+      <li>	<div class="dropdown">
 													<button class="dropbtn">
 														Language <span class="glyphicon glyphicon-chevron-down"></span>
 													</button>
@@ -135,11 +128,9 @@
 														<a th:href="@{/language/Chinese}">Chinese</a>
 														<a th:href="@{/language/Hindi}">Hindi</a>
 													</div>
-												</div>
-											</div></td>
-
-									</tr>
-								</table>
+												</div></li>
+    </ol>
+<!-- search category end -->
 							</div>
 						</div>
 
@@ -154,6 +145,32 @@
 	<!--1 starts -->
 
 	<!-- Movies Section -->
+	
+	<div class="row">
+      <div th:each="movie : ${mov}">
+
+
+     <!-- MOVIE ITEM-->
+
+
+        <div class="col-sm-6 col-md-3 col-lg-3 "> 
+          <div class="watchfun-item">
+            <div class="hover-bg"> <a  th:href="@{'~/movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${movie.rating}"></h4>
+              </div>
+              <img  th:src="@{${movie.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${movie.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+      </div>
+      <!-- Element ends-->
+    </div>
+	
 	<div class="row">
       <div th:each="movie : ${moviesByLanguage}">
 
@@ -163,7 +180,7 @@
 
         <div class="col-sm-6 col-md-3 col-lg-3 "> 
           <div class="watchfun-item">
-            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a  th:href="@{'~/movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4 th:text="${movie.rating}"></h4>
               </div>
@@ -189,7 +206,7 @@
 
         <div class="col-sm-6 col-md-3 col-lg-3 "> 
           <div class="watchfun-item">
-            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a  th:href="@{'~/movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4 th:text="${movie.rating}"></h4>
               </div>
@@ -215,7 +232,7 @@
 
         <div class="col-sm-6 col-md-3 col-lg-3 "> 
           <div class="watchfun-item">
-            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a  th:href="@{'~/movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4 th:text="${movie.rating}"></h4>
               </div>
@@ -240,7 +257,7 @@
 
         <div class="col-sm-6 col-md-3 col-lg-3 "> 
           <div class="watchfun-item">
-            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a  th:href="@{'~/movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4 th:text="${movie.rating}"></h4>
               </div>
@@ -259,13 +276,6 @@
 
 	<!--section 1 ends here -->
 
-	<div id="footer">
-		<div class="container text-center">
-			<div class="fnav">
-				<p>Copyright &copy; 2018 WatchFun. Designed by WatchFun Team</p>
-			</div>
-		</div>
-	</div>
 	<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/SmoothScroll.js"></script>
@@ -276,4 +286,5 @@
 	<script type="text/javascript" src="js/main.js"></script>
 
 </body>
+<div th:insert="~{footer :: footer}"></div>
 </html>

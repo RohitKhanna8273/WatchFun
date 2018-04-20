@@ -133,8 +133,8 @@ public class MovieService {
 		return movieRepository.findByRatingGreaterThan(rating-1);
 	}
 
-	public Object getMoviesByGenre(String genre) {
-		return movieRepository.findByLanguage("English");
+	public List<Movie> getMoviesByGenre(String genre) {
+		return movieRepository.findByGenreName(genre);
 	}
 }
 

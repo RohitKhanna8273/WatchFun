@@ -23,10 +23,12 @@
 <link rel="stylesheet" type="text/css" href="/css/nivo-lightbox/default.css"/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'/>
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
-
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <div th:insert="~{header :: header}"></div>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -85,27 +87,27 @@
       <hr>
     </div>
     <div class="categories">
-      <ul class="cat">
+      <ul class="mov">
         <li>
           <ol class="type">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <li><a href="#" data-filter=".latest-mov">Latest</a></li>
-            <li><a href="#" data-filter=".fav-mov">All time fav.</a></li>
-            <li><a href="#" data-filter=".upcoming-mov">Upcoming</a></li>
+            <li><a href="#" data-filter=".mov-all" class="active">All</a></li>
+            <li><a href="#" data-filter=".mov-latest">Latest</a></li>
+            <li><a href="#" data-filter=".mov-fav">All time fav.</a></li>
+            <li><a href="#" data-filter=".mov-upcoming">Upcoming</a></li>
           </ol>
         </li>
       </ul>
       <div class="clearfix"></div>
     </div>
     <div class="row">
-      <div th:each="movie : ${mov}">
+      <div class="watchfun-movies">
 
 
      <!-- MOVIE ITEM-->
 
-
-        <div class="col-sm-6 col-md-3 col-lg-3 "> 
-          <div class="watchfun-item">
+		<!-- movie all item -->
+        <div class="col-sm-6 col-md-3 col-lg-3 mov-all" th:each="movie : ${movAll}"> 
+          <div class="watchfun-movie">
             <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4 th:text="${movie.rating}"></h4>
@@ -118,6 +120,65 @@
           </ol>      
           <!-- element button ends-->
         </div>
+        <!-- movie all item end-->
+        
+        <!-- movie latest item -->
+                <div class="col-sm-6 col-md-3 col-lg-3 mov-latest" th:each="movie : ${movLatest}"> 
+          <div class="watchfun-movie">
+            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${movie.rating}"></h4>
+              </div>
+              <img  th:src="@{${movie.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${movie.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+        <!-- movie latest item end-->
+        
+        <!-- movie all time favorite item -->
+                <div class="col-sm-6 col-md-3 col-lg-3 mov-fav" th:each="movie : ${movFav}"> 
+          <div class="watchfun-movie">
+            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${movie.rating}"></h4>
+              </div>
+              <img  th:src="@{${movie.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${movie.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+        <!-- movie all time favorite item end-->
+        
+        
+        <!-- movie upcoming item -->
+                <div class="col-sm-6 col-md-3 col-lg-3 mov-upcoming" th:each="movie : ${movUpcoming}"> 
+          <div class="watchfun-movie">
+            <div class="hover-bg"> <a  th:href="@{'movie/'+${movie.id}}" th:title="${movie.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${movie.rating}"></h4>
+              </div>
+              <img  th:src="@{${movie.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${movie.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+        <!-- movie upcoming item end-->
+        
+        
+        
+        
+        
+        
       </div>
       <!-- Element ends-->
     </div>
@@ -131,7 +192,7 @@
 
 <!--section 1 ends here -->
 
-<!-- 3-->
+<!-- 2-->
 
 <!-- Novels Section -->
 <div id="novels">
@@ -141,39 +202,95 @@
       <hr>
     </div>
     <div class="categories">
-      <ul class="cat">
+      <ul class="nov">
         <li>
           <ol class="type">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <li><a href="#" data-filter=".graphic">Graphic Design</a></li>
-            <li><a href="#" data-filter=".illustration">Illustration</a></li>
-            <li><a href="#" data-filter=".photography">Photography</a></li>
+            <li><a href="#" data-filter=".nov-all" class="active">All</a></li>
+            <li><a href="#" data-filter=".nov-latest">Latest</a></li>
+            <li><a href="#" data-filter=".nov-fav">All time fav.</a></li>
+            <li><a href="#" data-filter=".nov-upcoming">Upcoming</a></li>
           </ol>
         </li>
       </ul>
       <div class="clearfix"></div>
     </div>
     <div class="row">
-      <div th:each="novel : ${nov}">
+       <div class="watchfun-novels">
 
 
      <!-- NOVEL ITEM-->
 
-
-        <div class="col-sm-6 col-md-3 col-lg-3 "> 
-          <div class="watchfun-item">
-            <div class="hover-bg"> <a th:href="@{~/save1}" th:title="${novel.name}" data-lightbox-gallery="gallery1">
+		<!-- novel all item -->
+        <div class="col-sm-6 col-md-3 col-lg-3 nov-all" th:each="novel : ${novAll}"> 
+          <div class="watchfun-novel">
+            <div class="hover-bg"> <a  th:href="@{'novel/'+${novel.id}}" th:title="${novel.name}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4 th:text="${novel.rating}"></h4>
               </div>
-              <img th:src="@{${novel.img}}" class="img-responsive" > </a> </div>
+              <img  th:src="@{${novel.img}}" class="img-responsive" > </a> </div>
           </div>
           <!-- element button-->        
-          <ol class="dd">            
-            <li><a th:href="@{source/I-origin.torrent}" >Download11</a></li>
+          <ol class="downloadlink">            
+            <li><a th:href="@{${novel.downloadLink}}" >Download</a></li>
           </ol>      
           <!-- element button ends-->
         </div>
+        <!-- novel all item ends -->
+        
+        <!-- novel latest item -->
+                <div class="col-sm-6 col-md-3 col-lg-3 nov-latest" th:each="novel : ${novLatest}"> 
+          <div class="watchfun-novel">
+            <div class="hover-bg"> <a  th:href="@{'novel/'+${novel.id}}" th:title="${novel.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${novel.rating}"></h4>
+              </div>
+              <img  th:src="@{${novel.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${novel.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+        <!-- novel latest item ends-->
+        
+        <!-- novel all time favorite item -->
+                <div class="col-sm-6 col-md-3 col-lg-3 nov-fav" th:each="novel : ${novFav}"> 
+          <div class="watchfun-novel">
+            <div class="hover-bg"> <a  th:href="@{'novel/'+${novel.id}}" th:title="${novel.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${novel.rating}"></h4>
+              </div>
+              <img  th:src="@{${novel.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${novel.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+        <!-- novel all time favorite item ends-->
+        
+        
+        <!-- novel upcoming item -->
+                <div class="col-sm-6 col-md-3 col-lg-3 nov-upcoming" th:each="novel : ${novUpcoming}"> 
+          <div class="watchfun-novel">
+            <div class="hover-bg"> <a  th:href="@{'novel/'+${novel.id}}" th:title="${novel.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${novel.rating}"></h4>
+              </div>
+              <img  th:src="@{${novel.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${novel.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+        <!-- novel upcoming item ends-->
+        
+        
+        
       </div>
       <!-- Element ends-->
     </div>
@@ -185,9 +302,9 @@
 </div>
 
 
-<!-- section 3 ends here-->
+<!-- section 2 ends here-->
 
-<!-- 2-->
+<!-- 3-->
 <!-- TV-Series Section -->
 <div id="tvseries">
   <div class="container">
@@ -196,39 +313,98 @@
       <hr>
     </div>
     <div class="categories">
-      <ul class="cat">
+      <ul class="tvs">
         <li>
           <ol class="type">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <li><a href="#" data-filter=".graphic">Graphic Design</a></li>
-            <li><a href="#" data-filter=".illustration">Illustration</a></li>
-            <li><a href="#" data-filter=".photography">Photography</a></li>
+            <li><a href="#" data-filter=".tvs-all" class="active">All</a></li>
+            <li><a href="#" data-filter=".tvs-latest">Latest</a></li>
+            <li><a href="#" data-filter=".tvs-fav">All time fav.</a></li>
+            <li><a href="#" data-filter=".tvs-upcoming">Upcoming</a></li>
           </ol>
         </li>
       </ul>
       <div class="clearfix"></div>
     </div>
-        <div class="row">
-      <div th:each="tvSeries : ${tvs}">
+        <div class="row" >
+      <div class="watchfun-tvseriess" >
 
 
      <!-- TVSeries ITEM-->
-
-
-        <div class="col-sm-6 col-md-3 col-lg-3 "> 
-          <div class="watchfun-item">
-            <div class="hover-bg"> <a th:href="@{~/save1}" th:title="${tvSeries.name}" data-lightbox-gallery="gallery1">
+	<!-- tv series all item -->
+	<div class="col-sm-6 col-md-3 col-lg-3 tvs-all" th:each="tvseries : ${tvsAll}">      <!-- append class here-->
+          <div class="watchfun-tvseries">
+            <div class="hover-bg"> <a  th:href="@{'tvseries/'+${tvseries.id}}" th:title="${tvseries.name}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
-                <h4 th:text="${tvSeries.rating}"></h4>
+                <h4 th:text="${tvseries.rating}"></h4>
               </div>
-              <img th:src="@{${tvSeries.img}}" class="img-responsive" > </a> </div>
+              <img  th:src="@{${tvseries.img}}" class="img-responsive" > </a> </div>
           </div>
           <!-- element button-->        
-          <ol class="dd">            
-            <li><a th:href="@{source/I-origin.torrent}" >Download113</a></li>
+          <ol class="downloadlink">            
+            <li><a th:href="@{${tvseries.downloadLink}}" >Download</a></li>
           </ol>      
           <!-- element button ends-->
         </div>
+    <!-- tv series all item ends -->    
+        
+        
+	<!-- tv series latest item -->
+	        <div class="col-sm-6 col-md-3 col-lg-3 tvs-latest" th:each="tvseries : ${tvsLatest}">      <!-- append class here-->
+          <div class="watchfun-tvseries">
+            <div class="hover-bg"> <a  th:href="@{'tvseries/'+${tvseries.id}}" th:title="${tvseries.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${tvseries.rating}"></h4>
+              </div>
+              <img  th:src="@{${tvseries.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${tvseries.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+    <!-- tv series latest item ends -->
+        
+        
+	<!-- tv series favorite item -->
+	                <div class="col-sm-6 col-md-3 col-lg-3 tvs-fav" th:each="tvseries : ${tvsFav}">      <!-- append class here-->
+          <div class="watchfun-tvseries">
+            <div class="hover-bg"> <a  th:href="@{'tvseries/'+${tvseries.id}}" th:title="${tvseries.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${tvseries.rating}"></h4>
+              </div>
+              <img  th:src="@{${tvseries.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${tvseries.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+    <!-- tv series favorite item ends -->    
+        
+        
+        
+        
+	<!-- tv series upcoming item -->
+	                <div class="col-sm-6 col-md-3 col-lg-3 tvs-upcoming" th:each="tvseries : ${tvsUpcoming}">      <!-- append class here-->
+          <div class="watchfun-tvseries">
+            <div class="hover-bg"> <a  th:href="@{'tvseries/'+${tvseries.id}}" th:title="${tvseries.name}" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4 th:text="${tvseries.rating}"></h4>
+              </div>
+              <img  th:src="@{${tvseries.img}}" class="img-responsive" > </a> </div>
+          </div>
+          <!-- element button-->        
+          <ol class="downloadlink">            
+            <li><a th:href="@{${tvseries.downloadLink}}" >Download</a></li>
+          </ol>      
+          <!-- element button ends-->
+        </div>
+    <!-- tv series upcoming item ends -->
+        
+    
+        
       </div>
       <!-- Element ends-->
     </div>
@@ -243,14 +419,6 @@
 
 
 
-
-<div id="footer">
-  <div class="container text-center">
-    <div class="fnav">
-      <p>Copyright &copy; 2016 Magnum. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
-    </div>
-  </div>
-</div>
 <script type="text/javascript" src="/js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="/js/bootstrap.js"></script> 
 <script type="text/javascript" src="/js/SmoothScroll.js"></script> 
@@ -261,4 +429,5 @@
 <script type="text/javascript" src="/js/main.js"></script>
 
 </body>
+<div th:insert="~{footer :: footer}"></div>
 </html>

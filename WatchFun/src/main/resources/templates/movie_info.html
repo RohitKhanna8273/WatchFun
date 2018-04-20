@@ -1,151 +1,170 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Watch Fun</title>
-  <meta name="description" content="">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watch Fun</title>
+<meta name="description" content="">
 <meta name="author" content="">
 
 <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="img/apple-touch-icon-114x114.png">
 
 <!-- Bootstrap -->
-<link rel="stylesheet" type="text/css"  href="/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="/fonts/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css"
+	href="/fonts/font-awesome/css/font-awesome.css">
 
 <!-- Stylesheet
     ================================================== -->
-<link rel="stylesheet" type="text/css"  href="/css/style.css">
-<link rel="stylesheet" type="text/css" href="/css/nivo-lightbox/nivo-lightbox.css">
-<link rel="stylesheet" type="text/css" href="/css/nivo-lightbox/default.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="/js/modernizr.custom.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/nivo-lightbox/nivo-lightbox.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/nivo-lightbox/default.css">
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300'
+	rel='stylesheet' type='text/css'>
 
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
 </head>
 <div th:insert="~{header :: header}"></div>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
- <div class="wrapper">
-  <div class="content">
-  <div>
-  <div class="container">
-    <div class="section-title text-center center">
-      <h2></h2>
-      <hr>
-    </div>
-  
-    <div class="row" >
-  
-    
-      <div class="col-sm-3 " ><img th:src="@{${movieObject.img}}" class=" img-responsive" >
-        <div ><!-- element button-->        
-          <ol class="downloadButton ">            
-            <li ><a href="@{${movieObject.downloadLink}}"><span class="glyphicon glyphicon-download-alt"></span> Download</a></li>
-          </ol>      
-          <!-- element button ends--></div>
-      </div>
-      <div class="col-sm-9">
-      <div class="row">
-      	<div class="allData">
-      <h1><b th:text="${movieObject.name}"></b></h1>
-      </div>
-      <div class="col-sm-3">
-      
-      	<div class="allData">
-        <h4 ><span class="glyphicon glyphicon-film" th:text="${movieObject.language}"></span></h4>
-        <h4>Genre:</h4>
-        <table class="genreData">
-        <tr th:each="genre:${movieObject.genreSet}">
-        <td th:text="${genre.name}">
-        </td>
-        </tr>       
-        </table>
-        <h4 class="textAllign"><span class="glyphicon glyphicon-heart" th:text="${movieObject.rating}"></span></h4>
-        
-       </div>
-       
-       
-      </div>
-      <div class="col-sm-9">
-      	<div class="allData">
-      		<h4 th:text="${movieObject.year}"></h4>
-      		<h4 class="textAllign" th:text="${movieObject.status}"></h4>
-       	    <h4 class="textAllign" th:text="${movieObject.size}+' MB'"></h4>
-        	<h4 class="textAllign" th:text="'Rs '+${movieObject.price}"></h4>
-      	</div>
-      </div>
-      
-     </div> 
-     </div>
-    </div>
-    </div>
-    <div class="container">
-    <div class="row">
-    <br/>
-    <br/>
-    <br/>
-    </div>
-    </div>
-    <div class="container">
-    <div class="row">
-    
-    	<div class="col-sm-4">
-    		<h4>Synopsis:</h4>
-    		<p class="genreData" th:text="${movieObject.synopsis}"></p>
-    	
-    	</div>
-    	<div class="col-sm-4">
-    		<h4>Auteur:</h4>
-        <table class="genreData">
-        <tr th:each="auteur:${movieObject.auteurSet}">
-        <td>
-         <a  th:text="${auteur.name}" th:href="@{${auteur.link}}"> </a>
-        </td>
-        </tr>       
-        </table>
-    	</div>
-    	<div class="col-sm-4">
-    		<h4>Cast:</h4>
-        <table class="genreData">
-        <tr th:each="cast:${movieObject.castSet}">
-        <td>
-         <a  th:text="${cast.name}" th:href="@{${cast.link}}"> </a>
-        </td>
-        </tr>       
-        </table>
-    	</div>
-    
-    </div>
-    </div>
-  
-</div>
-  
-  </div>
-  <div class="footerLocation">
-  <div id="footer">
-  <div class="container text-center">
-    <div class="fnav">
-      <p>Copyright &copy; 2016 Magnum. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
-    </div>
-  </div>
-</div>	
-  </div>
+	<div class="wrapper">
+		<div class="content">
+			<div>
+				<div class="container">
+					<div class="section-title text-center center">
+						<h2></h2>
+						<hr>
+					</div>
 
-<script type="text/javascript" src="/js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="/js/bootstrap.js"></script> 
-<script type="text/javascript" src="/js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="/js/nivo-lightbox.js"></script> 
-<script type="text/javascript" src="/js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="/js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="/js/contact_me.js"></script> 
-<script type="text/javascript" src="/js/main.js"></script>
+					<div class="row">
 
-</div>
+
+						<div class="col-sm-3 ">
+							<img th:src="@{${movieObject.img}}" class=" img-responsive">
+							<div>
+								<!-- element button-->
+								<ol class="downloadButton ">
+									<li><a th:href="@{${movieObject.downloadLink}}"><span
+											class="glyphicon glyphicon-download-alt"></span> Download</a></li>
+								</ol>
+								<!-- element button ends-->
+							</div>
+						</div>
+						<div class="col-sm-9">
+							<div class="row">
+								<div class="allData">
+									<h1>
+										<b th:text="${movieObject.name}"></b>
+									</h1>
+								</div>
+								<div class="col-sm-3">
+
+									<div class="allData">
+										<h4>
+											<span class="glyphicon glyphicon-film"
+												th:text="${movieObject.language}"></span>
+										</h4>
+										<h4>Genre:</h4>
+										<table class="genreData">
+											<tr th:each="genre:${movieObject.genreSet}">
+												<td th:text="${genre.name}"></td>
+											</tr>
+										</table>
+										<h4 class="textAllign">
+											<span class="glyphicon glyphicon-heart"
+												th:text="${movieObject.rating}"></span>
+										</h4>
+
+									</div>
+
+
+								</div>
+								<div class="col-sm-9">
+									<div class="allData">
+										<h4 th:text="${movieObject.year}"></h4>
+										<h4 class="textAllign" th:text="${movieObject.status}"></h4>
+										<h4 class="textAllign" th:text="${movieObject.size}+' MB'"></h4>
+										<h4 class="textAllign" th:text="'Rs '+${movieObject.price}"></h4>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<br /> <br /> <br />
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+
+						<div class="col-sm-4">
+							<h4>Synopsis:</h4>
+							<p class="genreData" th:text="${movieObject.synopsis}"></p>
+
+						</div>
+						<div class="col-sm-4">
+							<h4>Auteur:</h4>
+							<table class="genreData">
+								<tr th:each="auteur:${movieObject.auteurSet}">
+									<td><a th:text="${auteur.name}"
+										th:href="@{${auteur.link}} " th:target="_blank"> </a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-4">
+							<h4>Cast:</h4>
+							<table class="genreData">
+								<tr th:each="cast:${movieObject.castSet}">
+									<td><a th:text="${cast.name}" th:href="@{${cast.link}}"
+										th:target="_blank"> </a></td>
+								</tr>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<div class="footerLocation">
+		<div id="footer">
+			<div class="container text-center">
+				<div class="fnav">
+					<p>Copyright &copy; 2018 Magnum. Designed by Punjabi Boys</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/js/SmoothScroll.js"></script>
+	<script type="text/javascript" src="/js/nivo-lightbox.js"></script>
+	<script type="text/javascript" src="/js/jquery.isotope.js"></script>
+	<script type="text/javascript" src="/js/jqBootstrapValidation.js"></script>
+	<script type="text/javascript" src="/js/contact_me.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/modernizr.custom.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

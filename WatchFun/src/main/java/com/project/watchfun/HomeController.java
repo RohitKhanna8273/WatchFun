@@ -27,7 +27,11 @@ public class HomeController {
 	@RequestMapping(value= {"/home" , "/" , "index"})
 	public String welcome(Map<String, Object> model) {
 
-		((Model) model).addAttribute("mov", ms.getAllMovies());
+		((Model) model).addAttribute("movAll", ms.getAllMovies());
+		((Model) model).addAttribute("movLatest", ms.getAllMovies());
+		((Model) model).addAttribute("movFav", ms.getAllMovies());
+		((Model) model).addAttribute("movUpcoming", ms.getAllMovies());
+		
 		((Model) model).addAttribute("nov", ns.getAllNovels());
 		((Model) model).addAttribute("tvs", ts.getAllTVSeries());
 
@@ -100,7 +104,7 @@ public class HomeController {
 	
 	@RequestMapping(value="genre/{genre}")
 	public String getMoviesByGenre(Map<String, Object> model, @PathVariable("genre") String genre) {
-		((Model) model).addAttribute("moviesByRating", ms.getMoviesByGenre(genre));
+		((Model) model).addAttribute("moviesByGenre", ms.getMoviesByGenre(genre));
 		return "browse_all";
 	}
 }
