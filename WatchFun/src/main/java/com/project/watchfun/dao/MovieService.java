@@ -35,14 +35,9 @@ public class MovieService {
 		return movieList;
 
 	}
-	//
-	// public List<Movie> getMovieByGenre(int id){
-	// List<Movie> movieList= new ArrayList<>();
-	// movieRepository.findByGenreId(id);
-	// return movieList;
-	// }
+	
 
-	public String insertMov() {
+	public String insertMov(int i) {
 
 		Set<Auteur> auteurSet = new HashSet<>();
 
@@ -61,7 +56,7 @@ public class MovieService {
 		castSet.add(new Cast("Gael García Bernal", "https://en.wikipedia.org/wiki/Gael_Garc%C3%ADa_Bernal"));
 		castSet.add(new Cast("Benjamin Bratt", "https://en.wikipedia.org/wiki/Benjamin_Bratt"));
 		castSet.add(new Cast("Alanna Ubach", "https://en.wikipedia.org/wiki/Alanna_Ubach"));
-		Movie movie = new Movie("coco", "Coco", "/img/movies/coco.jpg", 8.5, 20, "English", "/source/Coco.torrent",
+		Movie movie = new Movie("coco"+i, "Coco", "/img/movies/coco.jpg", 8.5, 20, "English", "/source/Coco.torrent",
 				"Despite his family's baffling generations-old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead following a mysterious chain of events. Along the way, he meets charming trickster Hector, and together, they set off on an extraordinary journey to unlock the real story behind Miguel's family history.",
 				700, "released", castSet, auteurSet, genreSet,2018);
 		movieRepository.save(movie);
@@ -69,11 +64,30 @@ public class MovieService {
 		return "inserterd";
 	}
 
-	public String insertNovel() {
+	public String insertAllmData() {
+		for(int i=1;i<=5;i++)
+		insertMov(i);
+		
+		return "done";
+	}
+	public String insertAllnData() {
+		for(int i=1;i<=5;i++)
+		insertNovel(i);
+		
+		return "done";
+	}
+	public String insertAlltData() {
+		for(int i=1;i<=5;i++)
+		insertTVSeries(i);
+		
+		return "done";
+	}
+
+	public String insertNovel(int i) {
 
 		Set<Genre> genreSet = new HashSet<>();
 		Genre genre1 = new Genre("Sci-fi");
-		Genre genre2 = new Genre("Comic");
+		Genre genre2 = new Genre("comic");
 		genreSet.add(genre1);
 		genreSet.add(genre2);
 
@@ -83,7 +97,9 @@ public class MovieService {
 		auteurSet.add(auteur1);
 		auteurSet.add(auteur2);
 
-		Novel novel1 = new Novel("id1", "MIB", "img", 8, 20, "language", "downloadLink", "synopsis", 20, "status",
+		Novel novel1 = new Novel("id1"+i, "MIB", "/img/movies/.jpg", 8, 20, "English", "/source/novel.pdf", "Connor’s grandmother leaves his dad a letter when she dies, and the letter’s confession shakes their tight-knit Italian-American family: The man who raised Dad is not his birth father.\r\n" + 
+				" \r\n" + 
+				"But the only clues to this birth father’s identity are a class ring and a pair of pilot’s wings. And so Connor takes it upon himself to investigate—a pursuit that becomes even more pressing when Dad is hospitalized after a stroke. What Connor discovers will lead him and his father to a new, richer understanding of race, identity, and each other.", 20, "released",
 				genreSet, auteurSet,2018);
 
 		novelRepository.save(novel1);
@@ -91,7 +107,7 @@ public class MovieService {
 		return "novel inserted";
 	}
 
-	public String insertTVSeries() {
+	public String insertTVSeries(int i) {
 
 		Set<Auteur> auteurSet = new HashSet<>();
 		Auteur auteur1 = new Auteur("TVS auteur", "link");
@@ -111,8 +127,8 @@ public class MovieService {
 		castSet.add(cast1);
 		castSet.add(cast2);
 
-		TVSeries tvSeries = new TVSeries(5, 0, "name", "img", 5.0, 20, "language", "downloadLink", "synopsis", 21,
-				"status", auteurSet, genreSet, castSet,2018);
+		TVSeries tvSeries = new TVSeries(i, 0, "name", "img/tvseries/", 5.0, 20, "english", "/sources/I-origin.torrent", "Back in the girl-power heyday of the 90s, a hit single would easily get you 15 minutes of fame. But today you'd be lucky to get 15 seconds. Maxine, played by People Just Do Nothing's Lily Brazier, never made it big with her teenage girl group Variety and now, as a middle-aged failing music manager, she finds herself in crisis, as the one act she looked after decides to drop her. But Maxine has a plan, a come back. This time bigger, bolder and, well - older. Who cares about a hip young girl group anyway?. What the world really needs is the first ever band of mums. And with Maxine at the helm, how can Mum Pop possibly fail? WANNABE is the story of unfinished business, one last shot at fame and struggling to let go of a dream.", 210,
+				"released", auteurSet, genreSet, castSet,2018);
 		tvSeriesRepository.save(tvSeries);
 		return "tv series inserded";
 	}
@@ -135,6 +151,11 @@ public class MovieService {
 
 	public List<Movie> getMoviesByGenre(String genre) {
 		return movieRepository.findByGenreName(genre);
+	}
+
+	public List<Movie> getMoviesBySearch(String searchItem) {
+		searchItem = searchItem.replace('+', ' ');
+		return movieRepository.findBySearch(searchItem);
 	}
 }
 

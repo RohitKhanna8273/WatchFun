@@ -701,7 +701,7 @@ ol.navbarIcon li a:hover {
 
 /*  BROWSE DROPDOWN*/
 .dropbtn {
-	background-color: #f6f6f6;
+	background : transparent;
 	padding: 8px 20px;
 	text-decoration: none;
 	border: none;
